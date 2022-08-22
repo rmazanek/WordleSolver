@@ -51,13 +51,13 @@ def GetInputs():
   inputMode = input("Input mode? 1 (manual), 2 (Brady test): ")
   
   if inputMode == "1":
-    print("Input can be prefixed by \"-\" as a shortcut to use the full alphabet minus the letters following the \"-\".")
-    remainingLetters = GetAllRemainingLetters("All remaining letters (incl. green and yellow (OR use \"-\" before eliminated letters)): ")
-    firstLetterOptions = GetPositionLetters("First letter remaining letters (incl. green and yellow (OR use \"-\" before eliminated letters)): ", remainingLetters)
-    secondLetterOptions = GetPositionLetters("Second letter remaining letters (incl. green and yellow (OR use \"-\" before eliminated letters)): ", remainingLetters)
-    thirdLetterOptions = GetPositionLetters("Third letter remaining letters (incl. green and yellow (OR use \"-\" before eliminated letters)): ", remainingLetters)
-    fourthLetterOptions = GetPositionLetters("Fourth letter remaining letters (incl. green and yellow (OR use \"-\" before eliminated letters)): ", remainingLetters)
-    fifthLetterOptions = GetPositionLetters("Fifth letter remaining letters (incl. green and yellow (OR use \"-\" before eliminated letters)): ", remainingLetters)
+    print("Input can be prefixed by \"-\" as a shortcut to use the full alphabet minus the letters following the \"-\". For example, an input of -abcdefg will indicate the letters hijklm...z.\n")
+    remainingLetters = GetAllRemainingLetters("If using this to get the set of answers before your last guess, ignore your last guess. \nIf using this to solve for your next guess, look at your latest guess. \nPlease enter all remaining letters (green, yellow, and unused (OR use \"-\" before eliminated (gray) letters)): ")
+    firstLetterOptions = GetPositionLetters("In the first letter spot, enter remaining options (if green, enter that letter only, otherwise, enter other greens, yellows, and unused the next guess could have (OR use \"-\" before eliminated (gray) letters)): ", remainingLetters)
+    secondLetterOptions = GetPositionLetters("In the second letter spot, enter remaining options (if green, enter that letter only, otherwise, enter other greens, yellows, and unused the next guess could have (OR use \"-\" before eliminated (gray) letters)): ", remainingLetters)
+    thirdLetterOptions = GetPositionLetters("In the third letter spot, enter remaining options (if green, enter that letter only, otherwise, enter other greens, yellows, and unused the next guess could have (OR use \"-\" before eliminated (gray) letters)): ", remainingLetters)
+    fourthLetterOptions = GetPositionLetters("In the fourth letter spot, enter remaining options (if green, enter that letter only, otherwise, enter other greens, yellows, and unused the next guess could have (OR use \"-\" before eliminated (gray) letters)): ", remainingLetters)
+    fifthLetterOptions = GetPositionLetters("In the fifth letter spot, enter remaining options (if green, enter that letter only, otherwise, enter other greens, yellows, and unused the next guess could have (OR use \"-\" before eliminated (gray) letters)): ", remainingLetters)
     return [firstLetterOptions,secondLetterOptions,thirdLetterOptions,fourthLetterOptions,fifthLetterOptions]
   elif inputMode == "2":
     return GetTestLetters()
@@ -142,8 +142,8 @@ def main():
   print(realWordsRemainingSet)
 
   smartGuesses = GetGuessesWithNecessaryCharacters(realWordsRemainingSet, letters)
-  print(f"\033[92mGuesses with yellow letters: \n{sorted(smartGuesses)}")
-  input("\033[0mPress enter key to rerun.")
+  print(f"Guesses with yellow letters: \n{sorted(smartGuesses)}")
+  input("Press enter key to rerun.")
   main()
 
 main()
